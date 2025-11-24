@@ -15,4 +15,4 @@ Main improvements include:
 - Training points handling
 - Email tools for certificates and online meeting information
 - Automated reminder emails
-- Backend modules for participant management
+- Backend module for participant management
