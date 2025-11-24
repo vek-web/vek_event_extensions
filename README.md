@@ -17,7 +17,7 @@ powerful enhancements for managing both standard and training events.
 
 Requirements
 ------------
-- TYPO3 v12
+- TYPO3 v13
 - `sf_event_mgt` extension installed and activated
 - Composer-based project recommended
 
@@ -41,6 +41,10 @@ The full license text is included in `LICENSE.txt`.
 Further documentation
 ---------------------
 See the `Documentation/` folder for more detailed information.
+
+Contact
+-------
+For maintainer and contact details, check the `ext_emconf.php` file.
 
 Changelog
 ---------

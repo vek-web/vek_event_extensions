@@ -53,3 +53,11 @@ They should be self-explanatory.
 
 If no sender name or email address is provided, the notification mail settings from `sf_event_mgt` will be used.
 If no subject line is set, emails will not be sent.
+
+Rootpage UID for email links in scheduler task
+==============================================
+To set the rootpage UID of your site for sending emails via scheduler task, please set the following constant:
+
+* :typoscript:`plugin.vek_event_extensions.settings.cliSitePageUid`
+
+If no value is set, the UID "1" will be used.

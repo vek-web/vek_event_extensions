@@ -32,4 +32,6 @@ module.tx_vekeventextensions.settings {
   certificate.templatePath = EXT:vek_event_extensions/Resources/Private/Templates/PDF/Teilnahmebescheinigung.html
   # cat=plugin.tx_vekeventextensions/file; type=string; label=Path to certificate stamp image
   certificate.stampImagePath = EXT:vek_event_extensions/Resources/Public/Images/stamp.png
+  # cat=module.tx_vekeventextensions/notification; type=int; label=Site rootpage uid for mails sent via scheduler command
+  cliSitePageUid =
 }

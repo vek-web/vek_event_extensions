@@ -16,6 +16,7 @@ module.tx_vekeventextensions.settings {
     certificate.subject = {$module.tx_vekeventextensions.settings.certificate.subject}
     certificate.templatePath = {$module.tx_vekeventextensions.settings.certificate.templatePath}
     certificate.stampImagePath = {$module.tx_vekeventextensions.settings.certificate.stampImagePath}
+    cliSitePageUid = {$module.tx_vekeventextensions.settings.cliSitePageUid}
 }
 
 plugin.tx_sfeventmgt.view {

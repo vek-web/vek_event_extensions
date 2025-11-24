@@ -6,7 +6,7 @@ Installation
 Requirements
 ------------
 
-- TYPO3 v12
+- TYPO3 v13
 - sf_event_mgt installed and activated
 - Composer mode recommended
 

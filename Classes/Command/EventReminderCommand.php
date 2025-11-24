@@ -23,10 +23,16 @@ use Vek\EventExtensions\Domain\Model\Event;
 use Vek\EventExtensions\Domain\Repository\EventRepository;
 use Vek\EventExtensions\Domain\Model\Registration;
 use DERHANSEN\SfEventMgt\Domain\Repository\RegistrationRepository;
-use DERHANSEN\SfEventMgt\Service\FluidStandaloneService;
+use DERHANSEN\SfEventMgt\Service\FluidRenderingService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Core\Site\SiteFinder;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequest;
+use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
+use TYPO3\CMS\Core\Core\Bootstrap;
 
 #[AsCommand(
     name: 'vekeventextensions:event-reminder',
@@ -45,13 +51,15 @@ class EventReminderCommand extends Command
      * @param EventRepository $eventRepository
      * @param RegistrationRepository $registrationRepository
      * @param PersistenceManager $persistenceManager
-     * @param FluidStandaloneService $fluidStandaloneService
+     * @param FluidRenderingService $fluidRenderingService
+     * @param SiteFinder $siteFinder
      */
     public function __construct(
         private readonly EventRepository        $eventRepository,
         private readonly RegistrationRepository $registrationRepository,
         private readonly PersistenceManager     $persistenceManager,
-        private readonly FluidStandaloneService $fluidStandaloneService,
+        private readonly FluidRenderingService  $fluidRenderingService,
+        private readonly SiteFinder             $siteFinder,
     )
     {
         parent::__construct();
@@ -60,11 +68,20 @@ class EventReminderCommand extends Command
     /** {@inheritDoc} */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        Bootstrap::initializeBackendAuthentication();
+
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $settings = $configurationManager->getConfiguration(
             ConfigurationManager::CONFIGURATION_TYPE_SETTINGS,
             'VekEventExtensions'
         );
+
+        $site = $this->siteFinder->getSiteByPageId((int)$settings['cliSitePageUid'] ?? 1);
+        $serverRequest = (new ServerRequest())
+            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
+            ->withAttribute('site', $site)
+            ->withAttribute('extbase', new ExtbaseRequestParameters());
+        $request = (new Request($serverRequest));
 
         $from = EmailAddressUtility::getSenderAddress('reminder', $settings);
 
@@ -72,7 +89,7 @@ class EventReminderCommand extends Command
         foreach ($events as $event) {
             foreach ($event->getRegistrations() as $registration) {
                 if ($registration->getConfirmed() && !$registration->getReminded()) {
-                    $this->sendReminder($registration, $event, $from, $settings);
+                    $this->sendReminder($registration, $event, $from, $settings, $request);
                     $registration->setReminded(true);
                     $this->registrationRepository->update($registration);
                 }
@@ -90,9 +107,10 @@ class EventReminderCommand extends Command
      * @param Event $event
      * @param Address $from
      * @param array $settings
+     * @param Request $request
      * @return void
      */
-    private function sendReminder(Registration $registration, Event $event, Address $from, array $settings): void
+    private function sendReminder(Registration $registration, Event $event, Address $from, array $settings, Request $request): void
     {
         if (($settings['reminder']['subject'] ?? '') === '') {
             return;
@@ -110,9 +128,10 @@ class EventReminderCommand extends Command
         $email
             ->to($registration->getEmail())
             ->from($from)
-            ->subject($this->fluidStandaloneService->parseStringFluid($settings['reminder']['subject'], ['event' => $event]))
+            ->subject($this->fluidRenderingService->parseString($request, $settings['reminder']['subject'], ['event' => $event]))
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('EventReminder')
+            ->setRequest($request)
             ->assignMultiple([
                 'event' => $event,
                 'registration' => $registration,

@@ -13,7 +13,7 @@ namespace Vek\EventExtensions\EventListener\Backend;
 
 use TYPO3\CMS\Backend\View\Event\ModifyDatabaseQueryForRecordListingEvent;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use PDO;
+use TYPO3\CMS\Core\Database\Connection;
 
 final class ModifyRecordListQueryListener
 {
@@ -44,7 +44,7 @@ final class ModifyRecordListQueryListener
 
         if ($event->getTable() === 'tx_sfeventmgt_domain_model_registration') {
             $queryBuilder->andWhere(
-                $queryBuilder->expr()->eq('event', $queryBuilder->createNamedParameter($eventId, PDO::PARAM_INT))
+                $queryBuilder->expr()->eq('event', $queryBuilder->createNamedParameter($eventId, Connection::PARAM_INT))
             );
         }
 

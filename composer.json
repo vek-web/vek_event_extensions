@@ -20,8 +20,8 @@
 	],
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"typo3/cms-core": "^12.4",
-		"derhansen/sf_event_mgt": "^7.0",
+		"typo3/cms-core": "^13.4",
+		"derhansen/sf_event_mgt": "^8.0",
 		"dompdf/dompdf": "^2.0.0"
 	},
 	"autoload": {

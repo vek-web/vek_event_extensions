@@ -13,7 +13,7 @@ namespace Vek\EventExtensions\User;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use PDO;
+use TYPO3\CMS\Core\Database\Connection;
 
 class DisplayCond
 {
@@ -38,7 +38,7 @@ class DisplayCond
                 ->select('eventtype')
                 ->from('tx_sfeventmgt_domain_model_event')
                 ->where(
-                    $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter((int)$data['record']['event'], PDO::PARAM_INT))
+                    $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter((int)$data['record']['event'], Connection::PARAM_INT))
                 )
                 ->executeQuery()
                 ->fetchOne();

@@ -23,12 +23,13 @@ use Psr\Http\Message\StreamFactoryInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Vek\EventExtensions\Domain\Model\Event;
 use Vek\EventExtensions\Domain\Repository\EventRepository;
 use Vek\EventExtensions\Domain\Model\Registration;
 use DERHANSEN\SfEventMgt\Domain\Repository\RegistrationRepository;
-use DERHANSEN\SfEventMgt\Service\FluidStandaloneService;
+use DERHANSEN\SfEventMgt\Service\FluidRenderingService;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
@@ -57,14 +58,14 @@ final class EventExtensionsModuleController extends ActionController
      * @param EventRepository $eventRepository
      * @param RegistrationRepository $registrationRepository
      * @param PersistenceManager $persistenceManager
-     * @param FluidStandaloneService $fluidStandaloneService
+     * @param FluidRenderingService $fluidRenderingService
      */
     public function __construct(
         protected readonly ModuleTemplateFactory  $moduleTemplateFactory,
         protected readonly EventRepository        $eventRepository,
         protected readonly RegistrationRepository $registrationRepository,
         protected readonly PersistenceManager     $persistenceManager,
-        protected readonly FluidStandaloneService $fluidStandaloneService,
+        protected readonly FluidRenderingService $fluidRenderingService,
     )
     {
     }
@@ -96,7 +97,7 @@ final class EventExtensionsModuleController extends ActionController
         if ($from !== null) {
             foreach ($event->getRegistrations() as $registration) {
                 if ($registration->getConfirmed() && !$registration->getLinksent()) {
-                    $this->sendMeetingLinkMail($registration, $event, $from, $this->settings);
+                    $this->sendMeetingLinkMail($registration, $event, $from, $this->settings, $this->request);
                     $registration->setLinksent(true);
                     $this->registrationRepository->update($registration);
                     $num++;
@@ -109,7 +110,7 @@ final class EventExtensionsModuleController extends ActionController
         $message = GeneralUtility::makeInstance(FlashMessage::class,
             sprintf($this->getLanguageService()->sL(self::LANG_FILE . 'eventextensionmodulecontroller_sendlinkAction_message'), $num),
             $this->getLanguageService()->sL(self::LANG_FILE . 'eventextensionmodulecontroller_sendlinkAction_message_after'),
-            $num > 0 ? FlashMessage::OK : FlashMessage::WARNING,
+            $num > 0 ? ContextualFeedbackSeverity::OK : ContextualFeedbackSeverity::WARNING,
             true
         );
         $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
@@ -144,7 +145,7 @@ final class EventExtensionsModuleController extends ActionController
                     && $registration->getCertificatecompliance() === true) {
                     $html = $this->renderTeilnahmeHtml($event, $registration);
                     $dompdf = $this->getTeilnahmeDomPdf($html);
-                    $this->sendCertificateMail($registration, $event, $dompdf, $from, $this->settings);
+                    $this->sendCertificateMail($registration, $event, $dompdf, $from, $this->settings, $this->request);
                     $registration->setCertificateSent(true);
                     $this->registrationRepository->update($registration);
                     $num++;
@@ -157,7 +158,7 @@ final class EventExtensionsModuleController extends ActionController
         $message = GeneralUtility::makeInstance(FlashMessage::class,
             sprintf($this->getLanguageService()->sL(self::LANG_FILE . 'eventextensionmodulecontroller_sendcertificateAction_message'), $num),
             $this->getLanguageService()->sL(self::LANG_FILE . 'eventextensionmodulecontroller_sendcertificateAction_message_after'),
-            $num > 0 ? FlashMessage::OK : FlashMessage::WARNING,
+            $num > 0 ? ContextualFeedbackSeverity::OK : ContextualFeedbackSeverity::WARNING,
             true
         );
         $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
@@ -226,9 +227,10 @@ final class EventExtensionsModuleController extends ActionController
         $email
             ->to($registration->getEmail())
             ->from($from)
-            ->subject($this->fluidStandaloneService->parseStringFluid($settings['meeting']['subject'], ['event' => $event]))
+            ->subject($this->fluidRenderingService->parseString($this->request, $settings['meeting']['subject'], ['event' => $event]))
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('EventTeamsLink')
+            ->setRequest($this->request)
             ->assignMultiple([
                 'event' => $event,
                 'registration' => $registration,
@@ -255,9 +257,10 @@ final class EventExtensionsModuleController extends ActionController
         $email
             ->to($registration->getEmail())
             ->from($from)
-            ->subject($this->fluidStandaloneService->parseStringFluid($settings['certificate']['subject'], ['event' => $event]))
+            ->subject($this->fluidRenderingService->parseString($this->request, $settings['certificate']['subject'], ['event' => $event]))
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('EventCertificate')
+            ->setRequest($this->request)
             ->assignMultiple([
                 'event' => $event,
             ])
