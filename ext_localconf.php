@@ -20,3 +20,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['vek'] = ['Vek\\EventE
 $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][100] = 'EXT:vek_event_extensions/Resources/Private/Templates/Email';
 $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][100] = 'EXT:vek_event_extensions/Resources/Private/Layouts/Email';
 $GLOBALS['TYPO3_CONF_VARS']['MAIL']['partialRootPaths'][100] = 'EXT:vek_event_extensions/Resources/Private/Partials/Email';
+
+// Trigger documentation rendering
