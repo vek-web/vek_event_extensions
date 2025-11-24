@@ -1,0 +1,35 @@
+ customsubcategory=notification=LLL:EXT:sf_event_mgt/Resources/Private/Language/locallang_be.xlf:constants.subcategory.notification
+
+plugin.tx_vekeventextensions.view {
+  # cat=plugin.tx_vekeventextensions/file; type=string; label=Path to template root
+	templateRootPaths.0 = EXT:vek_event_extensions/Resources/Private/Templates/
+	# cat=plugin.tx_vekeventextensions/file; type=string; label=Path to template partials
+	partialRootPaths.0 = EXT:vek_event_extensions/Resources/Private/Partials/
+	# cat=plugin.tx_vekeventextensions/file; type=string; label=Path to template layouts
+	layoutRootPaths.0 = EXT:vek_event_extensions/Resources/Private/Layouts/
+}
+
+module.tx_vekeventextensions.settings {
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Email address for reminder emails sent by the extension
+  reminder.senderEmail =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Sender name for reminder emails sent by the extension
+  reminder.senderName =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Subject for reminder emails sent to user
+ reminder.subject = Reminder for event "{event.title}"
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Email address for meeting link emails sent by the extension
+  meeting.senderEmail =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Sender name for meeting link emails sent by the extension
+  meeting.senderName =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Subject for meeting link emails sent to user
+  meeting.subject = Meeting links for event "{event.title}"
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Email address for certificate emails sent by the extension
+  certificate.senderEmail =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Sender name for certificate emails sent by the extension
+  certificate.senderName =
+  # cat=module.tx_vekeventextensions/notification; type=string; label=Subject for certificate emails sent to user
+  certificate.subject = Your certificate for event "{event.title}"
+  # cat=plugin.tx_vekeventextensions/file; type=string; label=Path to certificate template
+  certificate.templatePath = EXT:vek_event_extensions/Resources/Private/Templates/PDF/Teilnahmebescheinigung.html
+  # cat=plugin.tx_vekeventextensions/file; type=string; label=Path to certificate stamp image
+  certificate.stampImagePath = EXT:vek_event_extensions/Resources/Public/Images/stamp.png
+}

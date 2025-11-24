@@ -1,0 +1,24 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Vek\EventExtensions\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  Vek\EventExtensions\EventListener\Backend\ModifyRecordListQueryListener:
+    tags:
+      - name: event.listener
+        identifier: 'vekeventextensions/backend/modify-database-query-for-record-list'
+  Vek\EventExtensions\EventListener\RegistrationValidationListener:
+    tags:
+      - name: event.listener
+        identifier: 'vekeventextensions/conditionally-validation-event-registration'
+  Vek\EventExtensions\Command\EventReminderCommand:
+    tags:
+      - name: console.command
+        command: 'vekeventextensions:event-reminder'
+        description: 'Sents event reminder emails to registered participants'
+

@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+Reminder
+
+ - Event: {event.title}
+ - Date: {f:format.date(date: event.startdate, format: '% A, %d.%m.%Y - %H:%M')} - {f:format.date(date: event.enddate, format: '%H:%M')}
+<f:if condition="{event.location}"> - Location: {event.location.title}</f:if>
+<f:if condition="{event.meeting_Link}">
+Meeting link: {f:uri.typolink(parameter: event.meeting_Link)}
+<f:if condition="{event.meeting_Id}">Meeting ID: {event.meeting_Id}</f:if>
+<f:if condition="{event.meeting_Additional_id}">Identifier: {event.meeting_Additional_id}</f:if>
+</f:if>
+If you have any questions, please call us or send us an email.
+Thank you,
+{settings.notification.senderSignature}
+</html>

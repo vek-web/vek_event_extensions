@@ -1,0 +1,191 @@
+<!DOCTYPE  html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Teilnahmebescheinigung: {event.title}</title>
+    <meta name="author" content="Kuhnert"/>
+    <style> * {
+        margin: 0;
+        padding: 0;
+        text-indent: 0;
+    }
+
+    body {
+        padding: 30pt 40pt 0pt 40pt;
+    }
+
+    h3 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
+    h1 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 24pt;
+    }
+
+    h2 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 14pt;
+    }
+
+    h2 span.left {
+        width: 25%;
+        text-align: left;
+        display: inline-block;
+    }
+
+    h2 span.right {
+        width: 55%;
+        text-align: left;
+        display: inline-block;
+        border-bottom: 1px solid black;
+    }
+
+    p {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 14pt;
+        margin: 0pt;
+    }
+
+    div.center {
+        text-align: center;
+    }
+
+    .s0 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+        margin: 0pt 0pt 4pt 0pt;
+    }
+
+    .s1 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 14pt;
+    }
+
+    .s2 {
+        color: black;
+        font-family: Calibri, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: underline;
+        font-size: 13pt;
+    }
+
+    .signatur-container {
+        float: right;
+        margin-top: -98px;
+    }
+
+    .signatur-img {
+        width: 472px;
+        height: auto;
+    }
+    </style>
+</head>
+<body>
+<p class="s0">Veranstalter: {f:if(condition: event.certificateHost, then: event.certificateHost, else: 'Campus für Interdisziplinäre Studien (CIS)')}</p>
+<p class="s0">Wissenschaftliche Leitung: {f:if(condition: event.certificateSupervisor, then: event.certificateSupervisor, else: 'Prof. Dr. Emilia Reinhardt')}</p>
+<f:if condition="{event.fbPunkte}">
+    <p class="s0">Fortbildungspunkte: {event.fbPunkte} Punkte</p>
+</f:if>
+<f:if condition="{event.vnr}">
+    <p class="s0">VNR: {event.vnr}</p>
+</f:if>
+<p>
+    <br><br>
+<hr>
+<br><br><br><br>
+</p>
+
+<h1 style="text-indent: 0pt;text-align: center;">Teilnahmebescheinigung</h1>
+<p>
+    <br><br><br>
+</p>
+<h2>
+    <span class="left">Name:</span>
+    <span class="right"><f:if condition="{registration.title}">{registration.title} </f:if>{registration.firstname} {registration.lastname}</span>
+</h2>
+<p>
+    <br><br>
+</p>
+<h2>
+    <span class="left">Geburtsdatum:</span>
+    <span class="right">{registration.dateOfBirth -> f:format.date(format: '%d.%m.%Y')}</span>
+</h2>
+<p>
+    <br><br><br>
+</p>
+
+<div class="center">
+
+    <f:if condition="{event.certificateText}">
+        <f:then>
+            {event.certificateText -> f:format.html()}
+        </f:then>
+        <f:else>
+            <p>wird die Teilnahme an der vom Zentralinstitut für Qualitätssicherung und Weiterbildung (ZQW) zertifizierten Fortbildungsveranstaltung:</p>
+        </f:else>
+    </f:if>
+
+    <p>
+        <br><br>
+    </p>
+    <p class="s1">{event.title}</p>
+    <p>
+        <br>
+    </p>
+    <p>am: {event.startdate -> f:format.date(format: '%d.%m.%Y')}, {event.startdate -> f:format.date(format: '%H:%M')}-{event.enddate -> f:format.date(format: '%H:%M')} Uhr</p>
+    <p>
+        <br>
+    </p>
+    <p>{f:if(condition: event.certificateEventLocation, then: event.certificateEventLocation, else: 'online')}</p>
+    <p>
+        <br><br>
+    </p>
+    <p>
+        <strong>bestätigt.</strong>
+    </p>
+</div>
+<p>
+    <br><br><br><br><br>
+</p>
+<div class="bottom">
+    <p class="s2">{f:if(condition: event.certificateLocation, then: event.certificateLocation, else: 'Berlin')}, {f:if(condition: event.certificateDate, then: '{event.certificateDate -> f:format.date(format: \'%d.%m.%Y\')}', else: '{f:format.date(date: \'now\', format: \'%d.%m.%Y\')}')}</p>
+    <div class="signatur-container">
+        <f:if condition="{event.certificateimage}">
+            <f:then>
+                <img class="signatur-img" src="{f:uri.image(image: event.certificateimage, absolute: 1, width: '472c', height: '195c', crop: image.crop)}">
+            </f:then>
+            <f:else>
+                <img class="signatur-img" src="{f:uri.resource(path: stampImagePath, absolute: 1, )}" width="472" height="195"/>
+            </f:else>
+        </f:if>
+    </div>
+</div>
+</body>
+</html>

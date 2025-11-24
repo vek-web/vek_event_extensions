@@ -1,0 +1,32 @@
+plugin.tx_vekeventextensions.view {
+    templateRootPaths.0 = {$plugin.tx_vekeventextensions.view.templateRootPaths.0}
+    partialRootPaths.0 = {$plugin.tx_vekeventextensions.view.partialRootPaths.0}
+    layoutRootPaths.0 = {$plugin.tx_vekeventextensions.view.layoutRootPaths.0}
+}
+module.tx_vekeventextensions.view < plugin.tx_vekeventextensions.view
+module.tx_vekeventextensions.settings {
+    reminder.senderEmail = {$module.tx_vekeventextensions.settings.reminder.senderEmail}
+    reminder.senderName = {$module.tx_vekeventextensions.settings.reminder.senderName}
+    reminder.subject = {$module.tx_vekeventextensions.settings.reminder.subject}
+    meeting.senderEmail = {$module.tx_vekeventextensions.settings.meeting.senderEmail}
+    meeting.senderName = {$module.tx_vekeventextensions.settings.meeting.senderName}
+    meeting.subject = {$module.tx_vekeventextensions.settings.meeting.subject}
+    certificate.senderEmail = {$module.tx_vekeventextensions.settings.certificate.senderEmail}
+    certificate.senderName = {$module.tx_vekeventextensions.settings.certificate.senderName}
+    certificate.subject = {$module.tx_vekeventextensions.settings.certificate.subject}
+    certificate.templatePath = {$module.tx_vekeventextensions.settings.certificate.templatePath}
+    certificate.stampImagePath = {$module.tx_vekeventextensions.settings.certificate.stampImagePath}
+}
+
+plugin.tx_sfeventmgt.view {
+    layoutRootPaths {
+        2 = EXT:vek_event_extensions/Resources/Private/Layouts/
+    }
+    templateRootPaths {
+        2 = EXT:vek_event_extensions/Resources/Private/Templates/
+    }
+    partialRootPaths {
+        2 = EXT:vek_event_extensions/Resources/Private/Partials/
+    }
+}
+module.tx_sfeventmgt.view < plugin.tx_sfeventmgt.view

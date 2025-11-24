@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:vek_event_extensions/Resources/Private/Language/locallang_be">
+		<header/>
+		<body>
+			<trans-unit id="eventextensionmodulecontroller_sendlinkAction_message" resname="eventextensionmodulecontroller_sendlinkAction_message">
+				<source>%s participants notified.</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_sendlinkAction_message_after" resname="eventextensionmodulecontroller_sendlinkAction_message_after">
+				<source>Teams links sent</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_sendcertificateAction_message" resname="eventextensionmodulecontroller_sendcertificateAction_message">
+				<source>Certificate of participation sent to %s participants.</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_sendcertificateAction_message_after" resname="eventextensionmodulecontroller_sendcertificateAction_message_after">
+				<source>Certificates of attendance sent.</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_previewcertificateAction_firstname" resname="eventextensionmodulecontroller_previewcertificateAction_firstname">
+				<source>John</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_previewcertificateAction_lastname" resname="eventextensionmodulecontroller_previewcertificateAction_lastname">
+				<source>Doe</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_previewcertificateAction_dateofbirth" resname="eventextensionmodulecontroller_previewcertificateAction_dateofbirth">
+				<source>1980-12-01</source>
+			</trans-unit>
+			<trans-unit id="eventextensionmodulecontroller_sendCertificateMail_attachmentname" resname="eventextensionmodulecontroller_sendCertificateMail_attachmentname">
+				<source>Confirmation_of_participation</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

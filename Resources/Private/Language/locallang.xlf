@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:vek_event_extensions/Resources/Private/Language/locallang">
+		<header/>
+		<body>
+			<trans-unit id="tx_vekeventextensions_domain_model_registration.certificate" resname="tx_vekeventextensions_domain_model_registration.certificate">
+				<source>Certificate of attendance</source>
+			</trans-unit>
+			<trans-unit id="tx_vekeventextensions_domain_model_registration.efnnummer" resname="tx_vekeventextensions_domain_model_registration.efnnummer">
+				<source>Please provide us with your EFN number below.</source>
+			</trans-unit>
+			<trans-unit id="tx_vekeventextensions_domain_model_registration.kammer" resname="tx_vekeventextensions_domain_model_registration.kammer">
+				<source>Please let us know which Chamber you belong to.</source>
+			</trans-unit>
+			<trans-unit id="tx_vekeventextensions_domain_model_registration.dateOfBirth" resname="tx_vekeventextensions_domain_model_registration.dateOfBirth">
+				<source>We require your date of birth (DD.MM.YYYY) for the certificate of attendance, which we will of course treat as confidential.</source>
+			</trans-unit>
+			<trans-unit id="registrationValidationlistener_error_1724854396" resname="registrationValidationlistener_error_1724854396">
+				<source>Please enter your chamber membership.</source>
+			</trans-unit>
+			<trans-unit id="registrationValidationlistener_error_1724854397" resname="registrationValidationlistener_error_1724854397">
+				<source>Please enter your EFN number.</source>
+			</trans-unit>
+			<trans-unit id="registrationValidationlistener_error_1724854395" resname="registrationValidationlistener_error_1724854395">
+				<source>Please enter your date of birth.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

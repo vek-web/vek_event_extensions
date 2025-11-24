@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:vek_event_extensions/Resources/Private/Language/locallang_db">
+		<header/>
+		<body>
+			<trans-unit id="eventtype_label" resname="eventtype_label">
+				<source>Event type</source>
+			</trans-unit>
+			<trans-unit id="eventtype_description" resname="eventtype_description">
+				<source>Type of event</source>
+			</trans-unit>
+			<trans-unit id="eventtype_items_0" resname="eventtype_items_0">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="eventtype_items_1" resname="eventtype_items_1">
+				<source>Further education</source>
+			</trans-unit>
+			<trans-unit id="meeting_link_label" resname="meeting_link_label">
+				<source>Meeting link</source>
+			</trans-unit>
+			<trans-unit id="meeting_id_label" resname="meeting_id_label">
+				<source>Meeting ID</source>
+			</trans-unit>
+			<trans-unit id="meeting_additional_id_label" resname="meeting_additional_id_label">
+				<source>Identifier</source>
+			</trans-unit>
+			<trans-unit id="reminder_label" resname="reminder_label">
+				<source>Remind participants by email.</source>
+			</trans-unit>
+			<trans-unit id="reminder_period_label" resname="reminder_period_label">
+				<source>Time in hours before start for reminder.</source>
+			</trans-unit>
+			<trans-unit id="reminder_mail_label" resname="reminder_mail_label">
+				<source>Alternative sender email address for emails.</source>
+			</trans-unit>
+			<trans-unit id="reminder_mail_name_label" resname="reminder_mail_name_label">
+				<source>Alternative sender name for emails.</source>
+			</trans-unit>
+			<trans-unit id="vnr_label" resname="vnr_label">
+				<source>Event number</source>
+			</trans-unit>
+			<trans-unit id="certificate_host_label" resname="certificate_host_label">
+				<source>Organizer for certificate of attendance (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_supervisor_label" resname="certificate_supervisor_label">
+				<source>Scientific director for certificate of attendance (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_text_label" resname="certificate_text_label">
+				<source>Message for certificate of attendance (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_event_location_label" resname="certificate_event_location_label">
+				<source>Event location for certificate of attendance (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_location_label" resname="certificate_location_label">
+				<source>Place of issue for certificate of attendance (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_date_label" resname="certificate_date_label">
+				<source>Date for the certificate of attendance (otherwise, current date)</source>
+			</trans-unit>
+			<trans-unit id="fb_punkte_label" resname="fb_punkte_label">
+				<source>Training points</source>
+			</trans-unit>
+			<trans-unit id="certificateimage_label" resname="certificateimage_label">
+				<source>Image signature (if not standard)</source>
+			</trans-unit>
+			<trans-unit id="certificate_label" resname="certificate_label">
+				<source>Certificate of attendance</source>
+			</trans-unit>
+			<trans-unit id="certificate_items_0" resname="certificate_items_0">
+				<source>Please select</source>
+			</trans-unit>
+			<trans-unit id="certificate_items_1" resname="certificate_items_1">
+				<source>I need a certificate of attendance in order to receive CME credits for the training course.</source>
+			</trans-unit>
+			<trans-unit id="certificate_items_2" resname="certificate_items_2">
+				<source>I require a certificate of attendance without CME credits.</source>
+			</trans-unit>
+			<trans-unit id="certificate_items_3" resname="certificate_items_3">
+				<source>I do not require a certificate of attendance.</source>
+			</trans-unit>
+			<trans-unit id="kammer_label" resname="kammer_label">
+				<source>Chamber affiliation</source>
+			</trans-unit>
+			<trans-unit id="kammer_items_0" resname="kammer_items_0">
+				<source>Please select</source>
+			</trans-unit>
+			<trans-unit id="kammer_items_1" resname="kammer_items_1">
+				<source>medical association</source>
+			</trans-unit>
+			<trans-unit id="kammer_items_2" resname="kammer_items_2">
+				<source>psychotherapists association</source>
+			</trans-unit>
+			<trans-unit id="efnnummer_label" resname="efnnummer_label">
+				<source>EFN number</source>
+			</trans-unit>
+			<trans-unit id="reminded_label" resname="reminded_label">
+				<source>Participants have already been reminded by email.</source>
+			</trans-unit>
+			<trans-unit id="linksent_label" resname="linksent_label">
+				<source>Participants were sent the Teams link manually.</source>
+			</trans-unit>
+			<trans-unit id="send_teams_link_label" resname="send_teams_link_label">
+				<source>Send Teams link manually</source>
+			</trans-unit>
+			<trans-unit id="send_teams_link_content" resname="send_teams_link_content">
+				<source>Send Teams link to all participants by email?</source>
+			</trans-unit>
+			<trans-unit id="edit_registrations_label" resname="edit_registrations_label">
+				<source>Edit registrations</source>
+			</trans-unit>
+			<trans-unit id="preview_certificate_label" resname="preview_certificate_label">
+				<source>Preview certificates</source>
+			</trans-unit>
+			<trans-unit id="preview_certificate_data_title" resname="preview_certificate_data_title">
+				<source>Preview certificate</source>
+			</trans-unit>
+			<trans-unit id="send_certificate_label" resname="send_certificate_label">
+				<source>Send certificates</source>
+			</trans-unit>
+			<trans-unit id="send_certificate_data_title" resname="send_certificate_data_title">
+				<source>Send certificates</source>
+			</trans-unit>
+			<trans-unit id="send_certificate_content" resname="send_certificate_content">
+				<source>Send certificates by email to all participants who are not excluded?</source>
+			</trans-unit>
+			<trans-unit id="certificatecompliance_label" resname="certificatecompliance_label">
+				<source>Participant meets conditions for certificate of attendance.</source>
+			</trans-unit>
+			<trans-unit id="certificatesent_label" resname="certificatesent_label">
+				<source>Participants were sent a certificate of attendance.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
